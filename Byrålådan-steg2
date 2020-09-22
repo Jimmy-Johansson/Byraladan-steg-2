@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+
+class Program;
+{
+    static void Main(string[] args)
+    {
+            Console.WriteLine("BYRÅLÅDAN");
+            Console.Write("(Tryck valfri tangent för att gå vidare.)");
+            Console.ReadKey();
+            Console.Clear();
+            string innehåll = "";
+
+            //bool och while-loop för att användaren ska kunna återvända till huvudmenyn från switch-satsen nedan.
+            bool återvändaTillHuvudmeny = true;
+
+            while (återvändaTillHuvudmeny)
+            { 
+            //meny för byrå.
+            Console.WriteLine("1 Lägg till saker");
+            Console.WriteLine("2 Visa innehåll i byrån");
+            Console.WriteLine("3 Töm byrån");
+            Console.WriteLine("4 Stäng byrån");
+            Console.Write("Välj ett av siffer-valen: ");
+
+            string menyVal = Console.ReadLine();
+
+            //lista för inmatning av nya saker till byrån.
+            List<string> byråInnehåll = new List<string>();
+
+                //switch-sats för menyval.
+                switch (menyVal)
+                {
+                    //lägga ner saker i byrå.
+                    case "1":
+                        Console.WriteLine("Hur många och vad för sak vill du lägga ner i byrån?");
+                        innehåll = Console.ReadLine();
+                        byråInnehåll.Add(innehåll);
+                        break;
+
+                    //visar innehåll i byrån. OBS! Fungerar ej. Lämnar in uppgiften medvetet ändå, eftersom jag inte kommer fram till hur det ska lösas.
+                    case "2":
+                        for (int i = 0; i < byråInnehåll.Count; i++)
+                        {
+                            Console.WriteLine($"Övre lådan innehåller: {byråInnehåll[i]}");
+                        }
+                        break;
+
+                    //tömning av byrån.
+                    case "3":
+                        Console.WriteLine($"Byrån töms nu på {byråInnehåll}");
+                        byråInnehåll.Clear();
+                        break;
+
+                    //stänga byrån/avsluta programmet.
+                    case "4":
+                        break;
+
+                    //för felaktiga inmatningar från användaren i huvudmeny. 
+                    default:
+                        Console.Write("Felaktigt val. Välj ett befintligt val som finns i menyn.");
+                        break;
+        }
+
+
+    }
+
+}
